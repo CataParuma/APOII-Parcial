@@ -1,54 +1,55 @@
 
 public class VideoJuego implements Entregable {
-	
+
 	private String titulo, genero, compania;
 	private int horasEstimadas, juegosEntregados;
-	private boolean entregado, prestado;
+	private boolean entregado;
 	private VideoJuego[] listaV = new VideoJuego[5];
-	
+
 	public void lista() {
-		
+
 		listaV[0] = new VideoJuego("ZombiesXV", "Terror", "Terrores", 20);
 		listaV[1] = new VideoJuego("Calabazas", "Infantil", "Infantes", 5);
 		listaV[2] = new VideoJuego("Cocina", "Infantil", "Infantes", 15);
-		listaV[3] = new VideoJuego("Sal y pimienta", "Romance", "Romanticos", 25);
+		listaV[3] = new VideoJuego("Sal y pimienta", "Romance", "Romanticos", 13);
 		listaV[4] = new VideoJuego("Perritos", "Infantil", "Infantes", 10);
-		
+
 		listaV[0].entregar();
 		listaV[2].entregar();
 		listaV[4].entregar();
-		
+
 		for (int j = 0; j < listaV.length; j++) {
-			
+
 			System.out.println(listaV[j].toString());
-			if(listaV[j].isEntregado()==true) {
+			if (listaV[j].isEntregado() == true) {
 				juegosEntregados++;
 			}
 		}
-		
-		System.out.println("Cantidad de juegos entregados: "+juegosEntregados+"\n");
+
+		System.out.println("Cantidad de juegos entregados: " + juegosEntregados);
+		compareTo();
 	}
 
 	public VideoJuego() {
-		
+
 		titulo = " ";
 		genero = " ";
 		compania = " ";
 		horasEstimadas = 10;
 		isEntregado();
 	}
-	
+
 	public VideoJuego(String titulo, int horasEstimadas) {
-		
+
 		titulo = " ";
 		genero = " ";
 		compania = " ";
 		horasEstimadas = 10;
 		isEntregado();
 	}
-	
+
 	public VideoJuego(String titulo, String genero, String compania, int horasEstimadas) {
-		
+
 		this.titulo = titulo;
 		this.genero = genero;
 		this.compania = compania;
@@ -90,37 +91,42 @@ public class VideoJuego implements Entregable {
 
 	public String toString() {
 
-		return "VideoJuego [titulo=" + titulo + ", genero=" + genero + ", compania=" + compania + ", horasEstimadas="
-				+ horasEstimadas + "]";
+		return "VideoJuego [titulo=" + titulo + ", genero=" + genero + ", compañia=" + compania + ", horasEstimadas="
+				+ horasEstimadas + " Estado de entrega: " + entregado + "]";
 	}
 
 	public boolean entregar() {
-		
-		prestado=true;
-		return prestado;
+
+		entregado = true;
+		return entregado;
 	}
 
 	public boolean devolver() {
-		
-		prestado=false;
-		return prestado;
+
+		entregado = false;
+		return entregado;
 	}
 
 	public boolean isEntregado() {
-		
-		if(prestado==false) {
+
+		if (entregado == false) {
 			return false;
 		} else {
 			return true;
 		}
 	}
 
-	public void compareTo(Object a) {
+	public void compareTo() {
 
-		
+		int temp = 0;
+
+		for (int i = 0; i < listaV.length; i++) {
+
+			if (listaV[i].getHorasEstimadas() > listaV[temp].getHorasEstimadas()) {
+				temp = i;
+			}
+		}
+
+		System.out.println("El juego con mayor horas estimadas es: " + listaV[temp].toString());
 	}
-	
-	
 }
-
-

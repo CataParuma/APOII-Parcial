@@ -3,29 +3,32 @@ public class Serie implements Entregable {
 
 	private String titulo, genero, creador;
 	private int numeroTemporadas, seriesEntregados;
-	private boolean entregado, prestado;
+	private boolean entregado;
 	Serie[] listaS = new Serie[5];
 
 	public void lista() {
-		
+
 		listaS[0] = new Serie("Romances", "Romance", "David", 2);
 		listaS[1] = new Serie("Dragones", "Terror", "Samantha", 3);
 		listaS[2] = new Serie("Cocinando", "Familiar", "Romina", 5);
 		listaS[3] = new Serie("Tarantulas", "Terror", "Samuel", 3);
-		listaS[4] = new Serie("Naturaleza", "Infantil", "Sara", 5);
-		
+		listaS[4] = new Serie("Naturaleza", "Infantil", "Sara", 7);
+
 		listaS[1].entregar();
 		listaS[3].entregar();
-		
+
 		for (int j = 0; j < listaS.length; j++) {
-			
+
 			System.out.println(listaS[j].toString());
-			if(listaS[j].isEntregado()==true) {
+			if (listaS[j].isEntregado() == true) {
 				seriesEntregados++;
 			}
 		}
-		
-		System.out.println("Cantidad de series entregadas: "+seriesEntregados);
+
+		System.out.println("Cantidad de series entregadas: " + seriesEntregados);
+
+		compareTo();
+
 	}
 
 	public Serie() {
@@ -88,33 +91,43 @@ public class Serie implements Entregable {
 	}
 
 	public String toString() {
-		
+
 		return "Serie [titulo=" + titulo + ", genero=" + genero + ", creador=" + creador + ", numeroTemporadas="
-				+ numeroTemporadas + ", entregado=" + entregado + "]";
+				+ numeroTemporadas + " Estado de entrega: " + entregado + "]";
 	}
 
 	public boolean entregar() {
-		
-		prestado=true;
-		return prestado;
+
+		entregado = true;
+		return entregado;
 	}
 
 	public boolean devolver() {
-		
-		prestado=false;
-		return prestado;
+
+		entregado = false;
+		return entregado;
 	}
 
 	public boolean isEntregado() {
-		
-		if(prestado==false) {
+
+		if (entregado == false) {
 			return false;
 		} else {
 			return true;
 		}
 	}
 
-	public void compareTo(Object a) {
-		
+	public void compareTo() {
+
+		int temp = 0;
+
+		for (int i = 0; i < listaS.length; i++) {
+
+			if (listaS[i].getNumeroTemporadas() > listaS[temp].getNumeroTemporadas()) {
+				temp = i;
+			}
+		}
+
+		System.out.println("La serie con mayor numero de temporadas es: " + listaS[temp].toString() + "\n");
 	}
 }

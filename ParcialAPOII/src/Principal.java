@@ -2,13 +2,11 @@
 public class Principal {
 
 	public static void main(String[] args) {
-		
-		VideoJuego vj = new VideoJuego();
+
 		Serie sr = new Serie();
-		
-		vj.lista();
+		VideoJuego vj = new VideoJuego();
+
 		sr.lista();
-
+		vj.lista();
 	}
-
 }
