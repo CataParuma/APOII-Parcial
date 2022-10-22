@@ -36,7 +36,7 @@ public class VideoJuego implements Entregable {
 		genero = " ";
 		compania = " ";
 		horasEstimadas = 10;
-		isEntregado();
+		entregado = false;
 	}
 
 	public VideoJuego(String titulo, int horasEstimadas) {

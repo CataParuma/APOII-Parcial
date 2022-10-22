@@ -4,7 +4,7 @@ public class Serie implements Entregable {
 	private String titulo, genero, creador;
 	private int numeroTemporadas, seriesEntregados;
 	private boolean entregado;
-	Serie[] listaS = new Serie[5];
+	private Serie[] listaS = new Serie[5];
 
 	public void lista() {
 
@@ -46,7 +46,7 @@ public class Serie implements Entregable {
 		genero = " ";
 		creador = " ";
 		numeroTemporadas = 3;
-		entregado = false;
+		isEntregado();
 	}
 
 	public Serie(String titulo, String genero, String creador, int numeroTemporadas) {
